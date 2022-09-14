@@ -1,6 +1,23 @@
 import styled from 'styled-components'
 
-export const Container = styled.div``
+export const ContainerMain = styled.main`
+  h1 {
+    margin-top: 6.5rem;
+    margin-bottom: 5.125rem;
+
+    font-family: 'Baloo 2';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 1.3;
+    color: ${(props) => props.theme.baseTheme.subtitle};
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+`
 
 export const SectionContainer = styled.section`
   padding-top: 2.5rem;
@@ -28,7 +45,7 @@ export const TitleContainer = styled.div`
   span {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     line-height: 1.3;
     display: flex;
   }
