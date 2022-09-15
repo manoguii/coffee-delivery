@@ -1,5 +1,20 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  > h1 {
+    font-family: 'Baloo 2';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+  }
+`
+
 export const FormCheckout = styled.form`
   display: flex;
   flex-direction: column;
@@ -125,7 +140,7 @@ export const PagamentoCheckout = styled.section`
       line-height: 130%;
       display: flex;
       align-items: center;
-      color: #403937;
+      color: ${(props) => props.theme.baseTheme.subtitle};
     }
 
     p {
@@ -136,7 +151,7 @@ export const PagamentoCheckout = styled.section`
       line-height: 130%;
       display: flex;
       align-items: center;
-      color: #574f4d;
+      color: ${(props) => props.theme.baseTheme.text};
     }
   }
 `
@@ -158,9 +173,50 @@ export const BaseLiPagamentoCheckout = styled.li`
     font-size: 12px;
     line-height: 160%;
     text-transform: uppercase;
-    color: #574f4d;
+    color: ${(props) => props.theme.baseTheme.text};
   }
 `
 export const LiPagamentoCheckoutCredito = styled(BaseLiPagamentoCheckout)``
 export const LiPagamentoCheckoutDebito = styled(BaseLiPagamentoCheckout)``
 export const LiPagamentoCheckoutDinheiro = styled(BaseLiPagamentoCheckout)``
+
+export const AsideContainer = styled.aside`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  width: 448px;
+  height: 498px;
+  top: 182px;
+  padding: 2.5rem;
+
+  background: ${(props) => props.theme.baseTheme.card};
+  border-radius: 6px 44px;
+`
+
+export const FooterContainer = styled.footer`
+  > button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 8px;
+    gap: 4px;
+    border: none;
+    width: 368px;
+    height: 46px;
+
+    /* Brand / Yellow */
+
+    background: #dbac2c;
+    border-radius: 6px;
+    margin-top: 1.5rem;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+  }
+`

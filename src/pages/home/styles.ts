@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ContainerMain = styled.main`
   h1 {
     margin-top: 6.5rem;
-    margin-bottom: 5.125rem;
+    margin-bottom: 4.125rem;
 
     font-family: 'Baloo 2';
     font-style: normal;
@@ -16,6 +16,7 @@ export const ContainerMain = styled.main`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    /* gap: 1rem; */
   }
 `
 
