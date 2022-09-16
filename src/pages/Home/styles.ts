@@ -74,3 +74,25 @@ export const PackingIcon = styled(BaseStyleSpan)`
 export const CoffeetIcon = styled(BaseStyleSpan)`
   background-color: ${(props) => props.theme.productTheme.purple};
 `
+
+export const ContainerMain = styled.main`
+  margin-top: 5.875rem;
+
+  margin-bottom: 5.875rem;
+
+  article {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    row-gap: 2.5rem;
+  }
+
+  h3 {
+    color: ${(props) => props.theme.baseTheme.title};
+    font-size: 2rem;
+    font-family: 'Baloo 2';
+    font-weight: 800;
+    line-height: 130%;
+
+    margin-bottom: 3.375rem;
+  }
+`
