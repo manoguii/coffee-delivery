@@ -25,7 +25,7 @@ export const HeaderContainer = styled.header`
     padding: 0.625rem 0.5rem 0.625rem;
   }
 
-  a {
+  a:nth-child(2) {
     display: flex;
     justify-content: center;
     align-items: center;
