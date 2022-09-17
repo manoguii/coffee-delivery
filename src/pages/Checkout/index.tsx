@@ -1,5 +1,7 @@
 import {
   CompleteYourOrder,
+  ContainerAside,
+  ContainerMain,
   InputCheckoutBairro,
   InputCheckoutCep,
   InputCheckoutCidade,
@@ -17,11 +19,12 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { CoffeeSelected } from './CoffeeSelected'
 
 export function Checkout() {
   return (
     <>
-      <main>
+      <ContainerMain>
         <CompleteYourOrder>
           <h3>Complete seu pedido</h3>
           <form>
@@ -76,8 +79,28 @@ export function Checkout() {
             </nav>
           </PaymentContainer>
         </CompleteYourOrder>
-        <SelectedProducts></SelectedProducts>
-      </main>
+        <ContainerAside>
+          <h3>Cafés selecionados</h3>
+          <SelectedProducts>
+            <CoffeeSelected />
+            <CoffeeSelected />
+            <ul>
+              <li>
+                <p>Total de itens</p>
+                <span>R$ 29,70</span>
+              </li>
+              <li>
+                <p>Entrega</p>
+                <span>R$ 3,50</span>
+              </li>
+              <li>
+                <p>Total</p>
+                <span>R$ 33,20</span>
+              </li>
+            </ul>
+          </SelectedProducts>
+        </ContainerAside>
+      </ContainerMain>
     </>
   )
 }

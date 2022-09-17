@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const ContainerMain = styled.main`
+  display: flex;
+  justify-content: space-between;
+`
+
 export const CompleteYourOrder = styled.div`
   h3 {
     font-family: 'Baloo 2';
@@ -143,4 +148,35 @@ export const InputCheckoutUf = styled(BaseInputFormCheckout)`
   height: 42px;
 `
 
-export const SelectedProducts = styled.aside``
+export const SelectedProducts = styled.aside`
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px;
+  background: ${(props) => props.theme.baseTheme.card};
+  border-radius: 6px 44px;
+
+  ul {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+  }
+`
+
+export const ContainerAside = styled.div`
+  h3 {
+    font-family: 'Baloo 2';
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 130%;
+    color: ${(props) => props.theme.baseTheme.subtitle};
+    margin-bottom: 1rem;
+  }
+`
