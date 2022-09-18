@@ -4,6 +4,7 @@ export const ContainerMain = styled.main`
   img {
     display: flex;
     align-self: flex-end;
+    width: auto;
   }
 
   h1 {
@@ -25,6 +26,7 @@ export const ContainerMain = styled.main`
     align-items: center;
     gap: 5rem;
     ul {
+      min-width: 26rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;

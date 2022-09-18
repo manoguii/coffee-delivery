@@ -10,6 +10,10 @@ export const Container = styled.div`
 
   border-bottom: 1px solid ${(props) => props.theme.baseTheme.button};
 
+  @media (max-width: 475px) {
+    font-size: 90%;
+  }
+
   div:nth-child(1) {
     display: flex;
     flex-direction: row;

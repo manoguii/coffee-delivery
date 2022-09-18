@@ -1,11 +1,50 @@
 import styled from 'styled-components'
 
 export const ContainerMain = styled.main`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 60% 37%;
+  grid-gap: 2rem;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 620px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const CompleteYourOrder = styled.div`
+  @media (max-width: 1200px) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1rem;
+
+    h3 {
+      grid-row: 1;
+    }
+
+    form {
+      grid-row: 2;
+    }
+
+    footer {
+      grid-row: 2;
+      height: fit-content;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 999px) {
+    display: flex;
+    flex-direction: column;
+
+    footer {
+      margin-top: 2rem;
+    }
+  }
+
   h3 {
     font-family: 'Baloo 2';
     font-weight: 700;
@@ -19,7 +58,19 @@ export const CompleteYourOrder = styled.div`
     padding: 2.5rem;
     background: ${(props) => props.theme.baseTheme.card};
     border-radius: 6px;
-    width: 40rem;
+    width: auto;
+
+    @media (max-width: 605px) {
+      padding: 1.8rem;
+    }
+
+    @media (max-width: 505px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 405px) {
+      padding: 1rem;
+    }
 
     input:focus {
       outline: 0;
@@ -33,18 +84,31 @@ export const CompleteYourOrder = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      padding-top: 2rem;
 
       div {
         display: flex;
         gap: 0.75rem;
+        flex-wrap: nowrap;
       }
-    }
 
-    header {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
+      div:nth-child(4) {
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 1090px) {
+        div {
+          display: grid;
+          grid-template-columns: 50% 50%;
+        }
+      }
+
+      header {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
 
       h4 {
         font-weight: 400;
@@ -64,11 +128,23 @@ export const CompleteYourOrder = styled.div`
 `
 
 export const PaymentContainer = styled.footer`
-  margin-top: 0.75rem;
+  margin-top: 2rem;
   padding: 2.5rem;
   background: ${(props) => props.theme.baseTheme.card};
   border-radius: 6px;
-  width: 40rem;
+  width: auto;
+
+  @media (max-width: 605px) {
+    padding: 1.8rem;
+  }
+
+  @media (max-width: 505px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 405px) {
+    padding: 1rem;
+  }
 
   header {
     display: flex;
@@ -94,6 +170,7 @@ export const PaymentContainer = styled.footer`
   nav {
     display: flex;
     gap: 0.75rem;
+    flex-wrap: wrap;
 
     button:hover {
       background: ${(props) => props.theme.baseTheme.hover};
@@ -118,6 +195,16 @@ export const PaymentContainer = styled.footer`
       background: ${(props) => props.theme.baseTheme.button};
 
       transition: 0.2s;
+
+      @media (max-width: 1200px) {
+        p {
+          font-size: 80%;
+        }
+      }
+
+      @media (max-width: 999px) {
+        padding: 1rem;
+      }
 
       p {
         font-weight: 400;
@@ -147,38 +234,58 @@ export const InputCheckoutCep = styled(BaseInputFormCheckout)`
   height: 2.625rem;
 `
 export const InputCheckoutRua = styled(BaseInputFormCheckout)`
-  width: 35rem;
+  width: auto;
   height: 2.625rem;
 `
 export const InputCheckoutNumero = styled(BaseInputFormCheckout)`
-  width: 12.5rem;
+  width: auto;
   height: 2.625rem;
 `
 export const InputCheckoutComplemento = styled(BaseInputFormCheckout)`
-  width: 21.75rem;
+  width: auto;
   height: 2.625rem;
 `
 export const InputCheckoutBairro = styled(BaseInputFormCheckout)`
-  width: 12.5rem;
+  width: auto;
   height: 2.625rem;
 `
 export const InputCheckoutCidade = styled(BaseInputFormCheckout)`
-  width: 17.25rem;
+  width: auto;
   height: 2.625rem;
 `
 export const InputCheckoutUf = styled(BaseInputFormCheckout)`
-  width: 60px;
+  max-width: 60px;
   height: 42px;
 `
 
 export const SelectedProducts = styled.aside`
-  width: 28rem;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 40px;
+  padding: 2.5rem;
   background: ${(props) => props.theme.baseTheme.card};
   border-radius: 6px 44px;
+
+  @media (max-width: 605px) {
+    padding: 1.8rem;
+  }
+
+  @media (max-width: 505px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 405px) {
+    padding: 1rem;
+  }
+
+  @media (max-width: 475px) {
+    padding: 30px;
+  }
+
+  @media (max-width: 410px) {
+    padding: 15px;
+  }
 
   ul {
     display: flex;
