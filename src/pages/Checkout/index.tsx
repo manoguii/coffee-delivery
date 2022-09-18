@@ -98,6 +98,8 @@ export function Checkout() {
                 <span>R$ 33,20</span>
               </li>
             </ul>
+
+            <button>confirmar pedido</button>
           </SelectedProducts>
         </ContainerAside>
       </ContainerMain>
