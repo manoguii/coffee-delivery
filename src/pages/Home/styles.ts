@@ -5,10 +5,34 @@ export const ContainerSection = styled.section`
   justify-content: space-between;
   padding-top: 4.875rem;
 
-  img {
-    width: 29.135rem;
-    height: 22.5rem;
+  @media (max-width: 1086px) {
+    align-items: center;
+    flex-direction: column;
+    padding-top: 0.5rem;
+    img {
+      order: -1;
+      padding-bottom: 2rem;
+    }
   }
+
+  @media (max-width: 545px) {
+    img {
+      width: 25rem;
+      height: 18rem;
+    }
+  }
+
+  @media (max-width: 426px) {
+    img {
+      width: 23rem;
+      height: 16rem;
+    }
+  }
+
+  /* img {
+    width: auto;
+    height: 22.5rem;
+  } */
 
   div {
     h1 {
@@ -82,8 +106,14 @@ export const ContainerMain = styled.main`
 
   article {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     row-gap: 2.5rem;
+    column-gap: 2rem;
+
+    @media (max-width: 560px) {
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 18rem));
+      justify-content: center;
+    }
   }
 
   h3 {

@@ -44,6 +44,10 @@ export const HeaderContainer = styled.header`
     width: 2.375rem;
     height: 2.375rem;
 
+    svg {
+      position: absolute;
+    }
+
     p {
       background: ${(props) => props.theme.productTheme['yellow-dark']};
       color: ${(props) => props.theme.baseTheme.white};
@@ -53,9 +57,9 @@ export const HeaderContainer = styled.header`
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
-      right: 4.5rem;
-      top: 1.5rem;
+      position: relative;
+      right: -18px;
+      top: -14px;
     }
   }
 `

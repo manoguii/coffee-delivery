@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ContainerCoffeeCard = styled.div`
-  width: 16rem;
+  width: auto;
   background: ${(props) => props.theme.baseTheme.card};
   border-radius: 6px 36px;
   padding: 0 1.25rem 1.25rem 1.25rem;
