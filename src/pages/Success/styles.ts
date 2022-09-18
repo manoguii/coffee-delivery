@@ -5,6 +5,29 @@ export const ContainerMain = styled.main`
     display: flex;
     align-self: flex-end;
     width: auto;
+
+    @media (max-width: 1055px) {
+      width: 25rem;
+    }
+
+    @media (max-width: 960px) {
+      width: 20rem;
+    }
+
+    @media (max-width: 880px) {
+      width: 30rem;
+      align-self: baseline;
+      order: -1;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 620px) {
+      width: 25rem;
+    }
+
+    @media (max-width: 440px) {
+      width: 20rem;
+    }
   }
 
   h1 {
@@ -24,9 +47,14 @@ export const ContainerMain = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+
+    @media (max-width: 880px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     ul {
-      min-width: 26rem;
+      width: auto;
       display: flex;
       flex-direction: column;
       gap: 2rem;
@@ -39,6 +67,10 @@ export const ContainerMain = styled.main`
       background: linear-gradient(#fafafa, #fafafa) padding-box,
         linear-gradient(90deg, #dbac2c, #8047f8) border-box;
       border-color: transparent;
+
+      @media (max-width: 880px) {
+        margin-top: 1rem;
+      }
 
       li:nth-child(2) {
         span {

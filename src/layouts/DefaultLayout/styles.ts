@@ -10,10 +10,10 @@ export const DefaultLayoutContainer = styled.div`
   }
 
   @media (max-width: 660px) {
-    padding: 0 1.5rem;
+    padding: 0 1.7rem;
   }
 
   @media (max-width: 460px) {
-    padding: 0 0.8rem;
+    padding: 0 1.2rem;
   }
 `
