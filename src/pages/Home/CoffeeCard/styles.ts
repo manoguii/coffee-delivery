@@ -93,6 +93,12 @@ export const ContainerCoffeeCard = styled.div`
         cursor: pointer;
         border: none;
         background: ${(props) => props.theme.productTheme['purple-dark']};
+
+        transition: 0.2s;
+      }
+
+      button:hover {
+        background: ${(props) => props.theme.productTheme.purple};
       }
 
       div {
@@ -113,6 +119,14 @@ export const ContainerCoffeeCard = styled.div`
           cursor: pointer;
           background: ${(props) => props.theme.baseTheme.button};
           padding: 0;
+        }
+
+        button:focus {
+          box-shadow: none;
+        }
+
+        button:hover {
+          background: ${(props) => props.theme.baseTheme.button};
         }
 
         p {

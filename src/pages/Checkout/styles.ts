@@ -21,6 +21,14 @@ export const CompleteYourOrder = styled.div`
     border-radius: 6px;
     width: 40rem;
 
+    input:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px
+        ${(props) => props.theme.productTheme['yellow-dark']};
+
+      color: ${(props) => props.theme.baseTheme.text};
+    }
+
     section {
       display: flex;
       flex-direction: column;
@@ -87,6 +95,17 @@ export const PaymentContainer = styled.footer`
     display: flex;
     gap: 0.75rem;
 
+    button:hover {
+      background: ${(props) => props.theme.baseTheme.hover};
+    }
+
+    button:focus {
+      background: ${(props) => props.theme.productTheme['purple-light']};
+      outline: 0;
+      box-shadow: 0 0 0 2px
+        ${(props) => props.theme.productTheme['purple-dark']};
+    }
+
     button {
       display: flex;
       justify-content: center;
@@ -97,6 +116,8 @@ export const PaymentContainer = styled.footer`
       border: none;
       cursor: pointer;
       background: ${(props) => props.theme.baseTheme.button};
+
+      transition: 0.2s;
 
       p {
         font-weight: 400;
@@ -118,6 +139,8 @@ export const BaseInputFormCheckout = styled.input`
   background: ${(props) => props.theme.baseTheme.input};
   border: 1px solid ${(props) => props.theme.baseTheme.button};
   border-radius: 4px;
+  color: ${(props) => props.theme.baseTheme.label};
+  font-size: 0.875rem;
 `
 export const InputCheckoutCep = styled(BaseInputFormCheckout)`
   width: 12.5rem;
@@ -206,12 +229,19 @@ export const SelectedProducts = styled.aside`
     border-radius: 6px;
     border: none;
     width: 100%;
+    cursor: pointer;
 
     font-weight: 700;
     font-size: 0.875rem;
     line-height: 160%;
     text-transform: uppercase;
     color: ${(props) => props.theme.baseTheme.white};
+
+    transition: 0.2s;
+  }
+
+  > button:hover {
+    background: ${(props) => props.theme.productTheme['yellow-dark']};
   }
 `
 

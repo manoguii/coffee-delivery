@@ -54,6 +54,12 @@ export const NavButtonContainer = styled.nav`
     text-transform: uppercase;
     font-size: 0.75rem;
     color: ${(props) => props.theme.baseTheme.text};
+
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background: ${(props) => props.theme.baseTheme.hover};
   }
 
   div {
@@ -74,6 +80,15 @@ export const NavButtonContainer = styled.nav`
       cursor: pointer;
       background: ${(props) => props.theme.baseTheme.button};
       padding: 0;
+      outline: none;
+    }
+
+    button:focus {
+      box-shadow: none;
+    }
+
+    button:hover {
+      background: ${(props) => props.theme.baseTheme.button};
     }
 
     p {
