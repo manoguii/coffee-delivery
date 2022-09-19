@@ -106,9 +106,10 @@ export const ContainerMain = styled.main`
 
   article {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 15rem));
     row-gap: 2.5rem;
     column-gap: 2rem;
+    justify-content: center;
 
     @media (max-width: 560px) {
       grid-template-columns: repeat(auto-fit, minmax(14rem, 18rem));

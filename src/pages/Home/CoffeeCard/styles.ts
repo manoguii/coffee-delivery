@@ -12,6 +12,12 @@ export const ContainerCoffeeCard = styled.div`
     justify-content: center;
     flex-direction: column;
 
+    div:nth-child(2) {
+      display: flex;
+      flex-direction: row;
+      gap: 0.25rem;
+    }
+
     span {
       font-size: 0.625rem;
       line-height: 130%;

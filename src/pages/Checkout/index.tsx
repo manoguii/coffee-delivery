@@ -83,7 +83,6 @@ export function Checkout() {
           <h3>Cafés selecionados</h3>
           <SelectedProducts>
             <CoffeeSelected />
-            <CoffeeSelected />
             <ul>
               <li>
                 <p>Total de itens</p>
