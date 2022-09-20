@@ -35,6 +35,7 @@ export type TypesCoffee = {
   tag: string[]
   price: string
   quantity: number
+  increaseAmountOfCoffee?: any
 }
 export type TypesProducts = [TypesCoffee]
 
@@ -175,6 +176,18 @@ export function Home() {
 
   const [products, setProducts] = useState(coffeeAvailables)
 
+  function increaseAmountOfCoffee(id: string) {
+    const idx = products.findIndex((coffee) => {
+      return coffee.id === id
+    })
+    const coffees = [...products]
+    coffees[idx] = {
+      ...coffees[idx],
+      quantity: coffees[idx].quantity + 1,
+    }
+    setProducts(coffees)
+  }
+
   return (
     <>
       <ContainerSection>
@@ -220,12 +233,14 @@ export function Home() {
             return (
               <CoffeeCard
                 key={coffee.id}
+                id={coffee.id}
                 title={coffee.title}
                 description={coffee.description}
                 tag={coffee.tag}
                 price={coffee.price}
                 img={coffee.img}
                 quantity={coffee.quantity}
+                increaseAmountOfCoffee={increaseAmountOfCoffee}
               />
             )
           })}
