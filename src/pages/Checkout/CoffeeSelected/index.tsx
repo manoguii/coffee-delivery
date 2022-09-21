@@ -1,8 +1,15 @@
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { Container, NavButtonContainer } from './styles'
-import { TypesCoffee } from '../../../contexts/CoffeeContextProvider'
+import {
+  CoffeeContext,
+  TypesCoffee,
+} from '../../../contexts/CoffeeContextProvider'
+import { useContext } from 'react'
 
 export function CoffeeSelected(props: TypesCoffee) {
+  const { deleteProductFromCart, addQuantityToCart, removeQuantityToCart } =
+    useContext(CoffeeContext)
+
   return (
     <Container>
       <div>
@@ -11,15 +18,15 @@ export function CoffeeSelected(props: TypesCoffee) {
           <p>{props.title}</p>
           <NavButtonContainer>
             <div>
-              <button>
+              <button onClick={() => removeQuantityToCart(props.id)}>
                 <Minus color={'#8047F8'} weight={'bold'} size={14} />
               </button>
               <p>{props.quantity}</p>
-              <button>
+              <button onClick={() => addQuantityToCart(props.id)}>
                 <Plus color={'#8047F8'} weight={'bold'} size={14} />
               </button>
             </div>
-            <button>
+            <button onClick={() => deleteProductFromCart(props.id)}>
               <Trash color="#8047F8" size={16} weight={'regular'} />
               Remover
             </button>

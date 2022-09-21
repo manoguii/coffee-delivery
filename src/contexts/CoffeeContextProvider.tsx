@@ -33,6 +33,9 @@ export interface TypesContext {
   increaseAmountOfCoffee: (id: string) => void
   addProductToCart: (id: string) => void
   decreaseAmountOfCoffee: (id: string) => void
+  deleteProductFromCart: (id: string) => void
+  addQuantityToCart: (id: string) => void
+  removeQuantityToCart: (id: string) => void
 }
 
 interface Context {
@@ -196,18 +199,70 @@ export function CoffeeContextProvider({ children }: Context) {
       return coffee.id === id
     })
     const coffees = [...products]
-    coffees[idx] = {
-      ...coffees[idx],
-      quantity: coffees[idx].quantity - 1,
+    if (coffees[idx].quantity > 0) {
+      coffees[idx] = {
+        ...coffees[idx],
+        quantity: coffees[idx].quantity - 1,
+      }
     }
     setProducts(coffees)
   }
 
   function addProductToCart(id: string) {
-    const objClickado = products.find((coffees) => {
+    const objClickado = products.find((coffees: TypesCoffee) => {
       return coffees.id === id
     })
-    setCart([...cart, objClickado])
+    const temNoArray = cart.some((item: TypesCoffee) => {
+      return item.id === objClickado?.id
+    })
+    const idx = cart.findIndex((coffee: TypesCoffee) => {
+      return coffee.id === id
+    })
+    if (temNoArray) {
+      cart[idx] = {
+        ...cart[idx],
+        quantity: cart[idx].quantity + 1,
+      }
+    } else if (objClickado.quantity === 0) {
+      console.log('adicione um item')
+    } else {
+      setCart((state: any) => {
+        return [...state, objClickado]
+      })
+    }
+  }
+
+  function deleteProductFromCart(id: string) {
+    const produtoClickado = cart.filter((coffee: TypesCoffee) => {
+      return coffee.id !== id
+    })
+    setCart(produtoClickado)
+  }
+
+  function addQuantityToCart(id: string) {
+    const idx = cart.findIndex((coffee: TypesCoffee) => coffee.id === id)
+
+    const arrayCart = [...cart]
+    arrayCart[idx] = {
+      ...arrayCart[idx],
+      quantity: arrayCart[idx].quantity + 1,
+    }
+
+    setCart(arrayCart)
+  }
+
+  function removeQuantityToCart(id: string) {
+    const idx = cart.findIndex((coffee: TypesCoffee) => coffee.id === id)
+
+    const arrayCart = [...cart]
+    if (arrayCart[idx].quantity > 0) {
+      arrayCart[idx] = {
+        ...arrayCart[idx],
+        quantity: arrayCart[idx].quantity - 1,
+      }
+    }
+
+    setCart(arrayCart)
   }
 
   return (
@@ -219,6 +274,9 @@ export function CoffeeContextProvider({ children }: Context) {
         coffeeAvailables,
         cart,
         decreaseAmountOfCoffee,
+        deleteProductFromCart,
+        addQuantityToCart,
+        removeQuantityToCart,
       }}
     >
       {children}

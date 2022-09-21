@@ -93,10 +93,13 @@ export function Checkout() {
               return (
                 <CoffeeSelected
                   key={coffee.id}
+                  id={coffee.id}
                   img={coffee.img}
                   title={coffee.title}
                   price={coffee.price}
                   quantity={coffee.quantity}
+                  description={coffee.description}
+                  tag={coffee.tag}
                 />
               )
             })}
