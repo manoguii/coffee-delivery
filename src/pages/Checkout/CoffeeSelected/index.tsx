@@ -1,20 +1,20 @@
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { Container, NavButtonContainer } from './styles'
-import Image from '../../../assets/Image (1).svg'
+import { TypesCoffee } from '../../../contexts/CoffeeContextProvider'
 
-export function CoffeeSelected() {
+export function CoffeeSelected(props: TypesCoffee) {
   return (
     <Container>
       <div>
-        <img src={Image} alt="" />
+        <img src={props.img} alt="" />
         <div>
-          <p>Expresso Tradicional</p>
+          <p>{props.title}</p>
           <NavButtonContainer>
             <div>
               <button>
                 <Minus color={'#8047F8'} weight={'bold'} size={14} />
               </button>
-              <p>1</p>
+              <p>{props.quantity}</p>
               <button>
                 <Plus color={'#8047F8'} weight={'bold'} size={14} />
               </button>
@@ -27,7 +27,7 @@ export function CoffeeSelected() {
         </div>
       </div>
       <footer>
-        <span>R$ 9,90</span>
+        <span>R$ {props.price}</span>
       </footer>
     </Container>
   )

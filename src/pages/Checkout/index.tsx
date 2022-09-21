@@ -20,8 +20,15 @@ import {
   Money,
 } from 'phosphor-react'
 import { CoffeeSelected } from './CoffeeSelected'
+import { useContext } from 'react'
+import {
+  CoffeeContext,
+  TypesCoffee,
+} from '../../contexts/CoffeeContextProvider'
 
 export function Checkout() {
+  const { cart } = useContext(CoffeeContext)
+
   return (
     <>
       <ContainerMain>
@@ -82,7 +89,17 @@ export function Checkout() {
         <ContainerAside>
           <h3>Cafés selecionados</h3>
           <SelectedProducts>
-            <CoffeeSelected />
+            {cart.map((coffee: TypesCoffee) => {
+              return (
+                <CoffeeSelected
+                  key={coffee.id}
+                  img={coffee.img}
+                  title={coffee.title}
+                  price={coffee.price}
+                  quantity={coffee.quantity}
+                />
+              )
+            })}
             <ul>
               <li>
                 <p>Total de itens</p>
