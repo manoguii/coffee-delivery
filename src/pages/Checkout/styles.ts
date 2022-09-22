@@ -331,7 +331,7 @@ export const SelectedProducts = styled.aside`
     }
   }
 
-  > button {
+  a {
     margin-top: 1.25rem;
     display: flex;
     flex-direction: row;
@@ -350,11 +350,16 @@ export const SelectedProducts = styled.aside`
     line-height: 160%;
     text-transform: uppercase;
     color: ${(props) => props.theme.baseTheme.white};
+    text-decoration: none;
+
+    button {
+      visibility: hidden;
+    }
 
     transition: 0.2s;
   }
 
-  > button:hover {
+  a:hover {
     background: ${(props) => props.theme.productTheme['yellow-dark']};
   }
 `

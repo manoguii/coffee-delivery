@@ -28,7 +28,7 @@ export function CoffeeCard(props: TypesCoffee) {
       <footer>
         <p>
           R$
-          <span>{props.price}</span>
+          <span>{props.price.toString().replace('.', ',')}</span>
         </p>
         <nav>
           <div>

@@ -25,9 +25,12 @@ import {
   CoffeeContext,
   TypesCoffee,
 } from '../../contexts/CoffeeContextProvider'
+import { NavLink } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 
 export function Checkout() {
   const { cart } = useContext(CoffeeContext)
+  const { register, handleSubmit, watch } = useForm()
 
   const sumCart = cart.reduce(
     (acc, currentValue) => acc + currentValue.quantity * currentValue.price,
@@ -37,16 +40,18 @@ export function Checkout() {
     (acc, currentValue) => acc + currentValue.quantity,
     0,
   )
-  // eslint-disable-next-line prettier/prettier
   const delivery = sumQuantity < 5 ? `R$ ${3.5}` : 'Frete Grátis'
   const total = delivery === 'Frete Grátis' ? sumCart : sumCart + 3.5
 
+  function handleCreateNewForm(data) {
+    console.log(data)
+  }
   return (
     <>
       <ContainerMain>
         <CompleteYourOrder>
           <h3>Complete seu pedido</h3>
-          <form>
+          <form onSubmit={handleSubmit(handleCreateNewForm)}>
             <header>
               <MapPinLine size={20} color="#C47F17" weight="bold" />
               <div>
@@ -55,20 +60,46 @@ export function Checkout() {
               </div>
             </header>
             <section>
-              <InputCheckoutCep type="text" placeholder="CEP" />
-              <InputCheckoutRua type="text" placeholder="Rua" />
+              <InputCheckoutCep
+                type=""
+                placeholder="cep"
+                {...register('cep')}
+              />
+              <InputCheckoutRua
+                type="text"
+                placeholder="Rua"
+                {...register('rua')}
+              />
               <div>
-                <InputCheckoutNumero type="text" placeholder="Numero" />
+                <InputCheckoutNumero
+                  type="number"
+                  placeholder="Numero"
+                  {...register('numero')}
+                />
                 <InputCheckoutComplemento
                   type="text"
                   placeholder="Complemento"
+                  {...register('complemento')}
                 />
               </div>
               <div>
-                <InputCheckoutBairro type="text" placeholder="Bairro" />
-                <InputCheckoutCidade type="text" placeholder="Cidade" />
-                <InputCheckoutUf type="text" placeholder="UF" />
+                <InputCheckoutBairro
+                  type="text"
+                  placeholder="Bairro"
+                  {...register('bairro')}
+                />
+                <InputCheckoutCidade
+                  type="text"
+                  placeholder="Cidade"
+                  {...register('cidade')}
+                />
+                <InputCheckoutUf
+                  type="text"
+                  placeholder="UF"
+                  {...register('uf')}
+                />
               </div>
+              <button type="submit">CONFIRMAR</button>
             </section>
           </form>
           <PaymentContainer>
@@ -129,8 +160,10 @@ export function Checkout() {
                 <span>R$ {total.toFixed(2)}</span>
               </li>
             </ul>
-
-            <button>confirmar pedido</button>
+            <NavLink to="/success" title="Success">
+              confirmar pedido
+              <button type="submit"></button>
+            </NavLink>
           </SelectedProducts>
         </ContainerAside>
       </ContainerMain>

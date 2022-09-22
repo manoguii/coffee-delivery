@@ -34,7 +34,7 @@ export function CoffeeSelected(props: TypesCoffee) {
         </div>
       </div>
       <footer>
-        <span>R$ {props.price}</span>
+        <span>R$ {props.price.toString().replace('.', ',')}</span>
       </footer>
     </Container>
   )

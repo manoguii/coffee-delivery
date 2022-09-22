@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { v4 as uuidv4 } from 'uuid'
 
 import { createContext, ReactNode, useState } from 'react'
@@ -52,7 +53,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'O tradicional café feito com água quente e grãos moídos',
       tag: ['Tradicional'],
       img: img1,
-      price: 9.9,
+      price: 8.89,
       quantity: 0,
     },
     {
@@ -61,7 +62,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Expresso diluído, menos intenso que o tradicional',
       tag: ['Tradicional'],
       img: img2,
-      price: 9.9,
+      price: 8.89,
       quantity: 0,
     },
     {
@@ -70,7 +71,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Café expresso tradicional com espuma cremosa',
       tag: ['Tradicional'],
       img: img3,
-      price: 9.9,
+      price: 8.89,
       quantity: 0,
     },
     {
@@ -79,7 +80,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Bebida preparada com café expresso e cubos de gelo',
       tag: ['Tradicional', 'gelado'],
       img: img4,
-      price: 9.9,
+      price: 9.48,
       quantity: 0,
     },
     {
@@ -88,7 +89,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Meio a meio de expresso tradicional com leite vaporizado',
       tag: ['Tradicional', 'com leite'],
       img: img5,
-      price: 9.9,
+      price: 9.48,
       quantity: 0,
     },
     {
@@ -98,7 +99,7 @@ export function CoffeeContextProvider({ children }: Context) {
         'Uma dose de café expresso com o dobro de leite e espuma cremosa',
       tag: ['Tradicional', 'com leite'],
       img: img6,
-      price: 9.9,
+      price: 9.89,
       quantity: 0,
     },
     {
@@ -108,7 +109,7 @@ export function CoffeeContextProvider({ children }: Context) {
         'Bebida com canela feita de doses iguais de café, leite e espuma',
       tag: ['Tradicional', 'com leite'],
       img: img7,
-      price: 9.9,
+      price: 9.89,
       quantity: 0,
     },
     {
@@ -118,7 +119,7 @@ export function CoffeeContextProvider({ children }: Context) {
         'Café expresso misturado com um pouco de leite quente e espuma',
       tag: ['Tradicional', 'com leite'],
       img: img8,
-      price: 9.9,
+      price: 9.89,
       quantity: 0,
     },
     {
@@ -127,7 +128,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Café expresso com calda de chocolate, pouco leite e espuma',
       tag: ['Tradicional', 'com leite'],
       img: img9,
-      price: 9.9,
+      price: 9.89,
       quantity: 0,
     },
     {
@@ -137,7 +138,7 @@ export function CoffeeContextProvider({ children }: Context) {
         'Bebida feita com chocolate dissolvido no leite quente e café',
       tag: ['Tradicional', 'com leite'],
       img: img10,
-      price: 9.9,
+      price: 9.89,
       quantity: 0,
     },
     {
@@ -147,7 +148,7 @@ export function CoffeeContextProvider({ children }: Context) {
         'Drink gelado de café expresso com rum, creme de leite e hortelã',
       tag: ['especial', 'alcoólico', 'gelado'],
       img: img11,
-      price: 9.9,
+      price: 10.48,
       quantity: 0,
     },
     {
@@ -156,7 +157,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Bebida adocicada preparada com café e leite de coco',
       tag: ['especial'],
       img: img12,
-      price: 9.9,
+      price: 10.48,
       quantity: 0,
     },
     {
@@ -165,7 +166,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Bebida preparada com grãos de café árabe e especiarias',
       tag: ['especial'],
       img: img13,
-      price: 9.9,
+      price: 10.48,
       quantity: 0,
     },
     {
@@ -174,7 +175,7 @@ export function CoffeeContextProvider({ children }: Context) {
       description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
       tag: ['especial', 'alcoólico'],
       img: img14,
-      price: 9.9,
+      price: 10.48,
       quantity: 0,
     },
   ]
