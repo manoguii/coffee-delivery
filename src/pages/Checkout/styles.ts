@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+export const DeliveryFree = styled.span`
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 130%;
+  color: ${(props) => props.theme.productTheme['delivery-free']};
+`
+
 export const ContainerMain = styled.main`
   display: grid;
   grid-template-columns: 60% 37%;

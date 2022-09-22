@@ -29,6 +29,18 @@ import {
 export function Checkout() {
   const { cart } = useContext(CoffeeContext)
 
+  const sumCart = cart.reduce(
+    (acc, currentValue) => acc + currentValue.quantity * currentValue.price,
+    0,
+  )
+  const sumQuantity = cart.reduce(
+    (acc, currentValue) => acc + currentValue.quantity,
+    0,
+  )
+  // eslint-disable-next-line prettier/prettier
+  const delivery = sumQuantity < 5 ? `R$ ${3.5}` : 'Frete Grátis'
+  const total = delivery === 'Frete Grátis' ? sumCart : sumCart + 3.5
+
   return (
     <>
       <ContainerMain>
@@ -106,15 +118,15 @@ export function Checkout() {
             <ul>
               <li>
                 <p>Total de itens</p>
-                <span>R$ 29,70</span>
+                <span>R$ {sumCart.toFixed(2)}</span>
               </li>
               <li>
                 <p>Entrega</p>
-                <span>R$ 3,50</span>
+                <span>{delivery}</span>
               </li>
               <li>
                 <p>Total</p>
-                <span>R$ 33,20</span>
+                <span>R$ {total.toFixed(2)}</span>
               </li>
             </ul>
 

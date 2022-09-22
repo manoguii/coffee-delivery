@@ -18,5 +18,6 @@ export const defaultTheme = {
     'purple-light': '#EBE5F9',
     'yellow-dark': '#C47F17',
     'yellow-light': '#F1E9C9',
+    'delivery-free': '#00b200',
   },
 }

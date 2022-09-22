@@ -11,18 +11,6 @@ export function CoffeeCard(props: TypesCoffee) {
   const { increaseAmountOfCoffee, addProductToCart, decreaseAmountOfCoffee } =
     useContext(CoffeeContext)
 
-  function handleIncreaseAmountOfCoffee() {
-    increaseAmountOfCoffee(props.id)
-  }
-
-  function handleAddProductToCart() {
-    addProductToCart(props.id)
-  }
-
-  function handleDecreaseAmountOfCoffee() {
-    decreaseAmountOfCoffee(props.id)
-  }
-
   return (
     <ContainerCoffeeCard>
       <div>
@@ -44,15 +32,15 @@ export function CoffeeCard(props: TypesCoffee) {
         </p>
         <nav>
           <div>
-            <button onClick={handleDecreaseAmountOfCoffee}>
+            <button onClick={() => decreaseAmountOfCoffee(props.id)}>
               <Minus color={'#8047F8'} weight={'bold'} size={14} />
             </button>
             <p>{props.quantity}</p>
-            <button onClick={handleIncreaseAmountOfCoffee}>
+            <button onClick={() => increaseAmountOfCoffee(props.id)}>
               <Plus color={'#8047F8'} weight={'bold'} size={14} />
             </button>
           </div>
-          <button onClick={handleAddProductToCart}>
+          <button onClick={() => addProductToCart(props.id)}>
             <ShoppingCart color="#FFFF" size={16} weight={'fill'} />
           </button>
         </nav>
