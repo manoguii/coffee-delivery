@@ -139,7 +139,7 @@ export const CompleteYourOrder = styled.div`
         align-items: center;
         padding: 0.75rem 0.5rem;
         gap: 0.25rem;
-        background: ${(props) => props.theme.productTheme.yellow};
+        background: ${(props) => props.theme.productTheme['yellow-dark']};
         border-radius: 6px;
         border: none;
         width: 100%;
@@ -151,7 +151,11 @@ export const CompleteYourOrder = styled.div`
       }
 
       button:hover {
-        background: ${(props) => props.theme.productTheme['yellow-dark']};
+        background: ${(props) => props.theme.productTheme.yellow};
+      }
+
+      button:disabled {
+        cursor: no-drop;
       }
     }
   }

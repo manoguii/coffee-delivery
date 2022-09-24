@@ -27,10 +27,36 @@ import {
 } from '../../contexts/CoffeeContextProvider'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
+
+const validationSchema = zod.object({
+  cep: zod.string().min(1, 'Informe o cep'),
+  numero: zod.number(),
+  rua: zod.string().min(1, 'Informe a rua'),
+  complemento: zod.string().min(1, 'Informe o complemento'),
+  uf: zod.string().min(2, 'Informe o uf').max(2),
+  cidade: zod.string().min(1, 'Informe a cidade'),
+  bairro: zod.string().min(1, 'Informe o bairro'),
+})
+
+type FormAdress = zod.infer<typeof validationSchema>
 
 export function Checkout() {
   const { cart } = useContext(CoffeeContext)
-  const { register, handleSubmit } = useForm()
+
+  const { register, handleSubmit, watch } = useForm<FormAdress>({
+    resolver: zodResolver(validationSchema),
+    defaultValues: {
+      cep: '',
+      rua: '',
+      complemento: '',
+      numero: 0,
+      uf: '',
+      cidade: '',
+      bairro: '',
+    },
+  })
 
   const sumCart = cart.reduce(
     (acc, currentValue) => acc + currentValue.quantity * currentValue.price,
@@ -40,14 +66,17 @@ export function Checkout() {
     (acc, currentValue) => acc + currentValue.quantity,
     0,
   )
-  const delivery = sumQuantity < 5 ? `R$ ${3.5}` : 'Frete Grátis'
+  const delivery =
+    sumQuantity < 5
+      ? `R$ ${(3.5).toFixed(2).replace('.', ',')}`
+      : 'Frete Grátis'
   const total = delivery === 'Frete Grátis' ? sumCart : sumCart + 3.5
 
-  // type FormAdress <infer typeof>
-
-  function handleCreateNewForm(data: any) {
+  function handleCreateNewForm(data: FormAdress) {
     console.log(data)
   }
+
+  const important = watch('cep')
   return (
     <>
       <ContainerMain>
@@ -101,7 +130,9 @@ export function Checkout() {
                   {...register('uf')}
                 />
               </div>
-              <button type="submit">CONFIRMAR</button>
+              <button type="submit" disabled={!important}>
+                CONFIRMAR
+              </button>
             </section>
           </form>
           <PaymentContainer>
@@ -151,7 +182,7 @@ export function Checkout() {
             <ul>
               <li>
                 <p>Total de itens</p>
-                <span>R$ {sumCart.toFixed(2)}</span>
+                <span>R$ {sumCart.toFixed(2).replace('.', ',')}</span>
               </li>
               <li>
                 <p>Entrega</p>
@@ -159,7 +190,7 @@ export function Checkout() {
               </li>
               <li>
                 <p>Total</p>
-                <span>R$ {total.toFixed(2)}</span>
+                <span>R$ {total.toFixed(2).replace('.', ',')}</span>
               </li>
             </ul>
             <NavLink to="/success" title="Success">
