@@ -30,7 +30,7 @@ import { useForm } from 'react-hook-form'
 
 export function Checkout() {
   const { cart } = useContext(CoffeeContext)
-  const { register, handleSubmit, watch } = useForm()
+  const { register, handleSubmit } = useForm()
 
   const sumCart = cart.reduce(
     (acc, currentValue) => acc + currentValue.quantity * currentValue.price,
@@ -43,7 +43,9 @@ export function Checkout() {
   const delivery = sumQuantity < 5 ? `R$ ${3.5}` : 'Frete Grátis'
   const total = delivery === 'Frete Grátis' ? sumCart : sumCart + 3.5
 
-  function handleCreateNewForm(data) {
+  // type FormAdress <infer typeof>
+
+  function handleCreateNewForm(data: any) {
     console.log(data)
   }
   return (

@@ -130,6 +130,29 @@ export const CompleteYourOrder = styled.div`
         line-height: 130%;
         color: ${(props) => props.theme.baseTheme.text};
       }
+
+      button {
+        margin-top: 1.25rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0.75rem 0.5rem;
+        gap: 0.25rem;
+        background: ${(props) => props.theme.productTheme.yellow};
+        border-radius: 6px;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+
+        color: ${(props) => props.theme.baseTheme.white};
+        text-transform: uppercase;
+        font-weight: 700s;
+      }
+
+      button:hover {
+        background: ${(props) => props.theme.productTheme['yellow-dark']};
+      }
     }
   }
 `
