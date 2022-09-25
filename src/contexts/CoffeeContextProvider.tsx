@@ -18,6 +18,17 @@ import img12 from '../assets/Image (12).svg'
 import img13 from '../assets/Image (13).svg'
 import img14 from '../assets/Image (14).svg'
 
+export interface TypesForm {
+  cep: string;
+  numero: number;
+  rua: string;
+  complemento: string;
+  uf: string;
+  cidade: string;
+  bairro: string;
+  id: string;
+}
+
 export interface TypesCoffee {
   id?: string | any
   title: string
@@ -31,12 +42,14 @@ export interface TypesContext {
   products: TypesCoffee[]
   cart: TypesCoffee[]
   coffeeAvailables: TypesCoffee[]
+  form: TypesForm[]
   increaseAmountOfCoffee: (id: string) => void
   addProductToCart: (id: string) => void
   decreaseAmountOfCoffee: (id: string) => void
   deleteProductFromCart: (id: string) => void
   addQuantityToCart: (id: string) => void
   removeQuantityToCart: (id: string) => void
+  handleCreateNewForm: (data: TypesForm) => void
 }
 
 interface Context {
@@ -44,6 +57,8 @@ interface Context {
 }
 
 export const CoffeeContext = createContext({} as TypesContext)
+
+
 
 export function CoffeeContextProvider({ children }: Context) {
   const coffeeAvailables: TypesCoffee[] = [
@@ -182,6 +197,24 @@ export function CoffeeContextProvider({ children }: Context) {
 
   const [products, setProducts] = useState<TypesCoffee[]>(coffeeAvailables)
   const [cart, setCart] = useState<TypesCoffee[]>([])
+  const [form, setForm] = useState<TypesForm[]>([])
+
+  function handleCreateNewForm(data: TypesForm) {
+    const idForm = uuidv4()
+    const formAdress = {
+      cep: data.cep,
+      numero: data.numero,
+      rua: data.rua,
+      complemento: data.complemento,
+      uf: data.uf,
+      cidade: data.cidade,
+      bairro: data.bairro,
+      id: idForm,
+      }
+    setForm([formAdress])
+  }
+
+  console.log(form)
 
   function increaseAmountOfCoffee(id: string) {
     const idx = products.findIndex((coffee) => {
@@ -279,6 +312,8 @@ export function CoffeeContextProvider({ children }: Context) {
         deleteProductFromCart,
         addQuantityToCart,
         removeQuantityToCart,
+        handleCreateNewForm,
+        form,
       }}
     >
       {children}

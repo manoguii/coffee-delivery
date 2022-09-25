@@ -62,9 +62,15 @@ export const CompleteYourOrder = styled.div`
   }
 
   form {
-    padding: 2.5rem;
-    background: ${(props) => props.theme.baseTheme.card};
-    border-radius: 6px;
+    > header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      background: ${(props) => props.theme.baseTheme.card};
+      border-radius: 6px;
+      padding: 2.5rem 2.5rem 0 2.5rem;
+    }
+
     width: auto;
 
     @media (max-width: 605px) {
@@ -92,6 +98,9 @@ export const CompleteYourOrder = styled.div`
       flex-direction: column;
       gap: 1rem;
       padding-top: 2rem;
+      background: ${(props) => props.theme.baseTheme.card};
+      border-radius: 6px;
+      padding: 2.5rem;
 
       div {
         display: flex;
@@ -108,13 +117,6 @@ export const CompleteYourOrder = styled.div`
           display: grid;
           grid-template-columns: 50% 50%;
         }
-      }
-
-      header {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
       }
 
       h4 {

@@ -24,11 +24,13 @@ import { useContext } from 'react'
 import {
   CoffeeContext,
   TypesCoffee,
+  TypesForm,
 } from '../../contexts/CoffeeContextProvider'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
+// import { v4 as uuidv4 } from 'uuid'
 
 const validationSchema = zod.object({
   cep: zod.string().min(1, 'Informe o cep'),
@@ -40,12 +42,12 @@ const validationSchema = zod.object({
   bairro: zod.string().min(1, 'Informe o bairro'),
 })
 
-type FormAdress = zod.infer<typeof validationSchema>
+// export type FormAdress = zod.infer<typeof validationSchema>
 
 export function Checkout() {
-  const { cart } = useContext(CoffeeContext)
+  const { cart, handleCreateNewForm } = useContext(CoffeeContext)
 
-  const { register, handleSubmit, watch } = useForm<FormAdress>({
+  const { register, handleSubmit } = useForm<TypesForm>({
     resolver: zodResolver(validationSchema),
     defaultValues: {
       cep: '',
@@ -72,11 +74,6 @@ export function Checkout() {
       : 'Frete Grátis'
   const total = delivery === 'Frete Grátis' ? sumCart : sumCart + 3.5
 
-  function handleCreateNewForm(data: FormAdress) {
-    console.log(data)
-  }
-
-  const important = watch('cep')
   return (
     <>
       <ContainerMain>
@@ -105,7 +102,7 @@ export function Checkout() {
                 <InputCheckoutNumero
                   type="number"
                   placeholder="Numero"
-                  {...register('numero')}
+                  {...register('numero', { valueAsNumber: true })}
                 />
                 <InputCheckoutComplemento
                   type="text"
@@ -130,37 +127,35 @@ export function Checkout() {
                   {...register('uf')}
                 />
               </div>
-              <button type="submit" disabled={!important}>
-                CONFIRMAR
-              </button>
             </section>
+
+            <PaymentContainer>
+              <header>
+                <CurrencyDollar size={20} color="#8047F8" weight="bold" />
+                <div>
+                  <h4>Pagamento</h4>
+                  <p>
+                    O pagamento é feito na entrega. Escolha a forma que deseja
+                    pagar
+                  </p>
+                </div>
+              </header>
+              <nav>
+                <button>
+                  <CreditCard size={14} color="#8047F8" weight="bold" />
+                  <p>Cartão de crédito</p>
+                </button>
+                <button>
+                  <Bank size={14} color="#8047F8" weight="bold" />
+                  <p>Cartão de débito</p>
+                </button>
+                <button>
+                  <Money size={14} color="#8047F8" weight="bold" />
+                  <p>Dinheiro</p>
+                </button>
+              </nav>
+            </PaymentContainer>
           </form>
-          <PaymentContainer>
-            <header>
-              <CurrencyDollar size={20} color="#8047F8" weight="bold" />
-              <div>
-                <h4>Pagamento</h4>
-                <p>
-                  O pagamento é feito na entrega. Escolha a forma que deseja
-                  pagar
-                </p>
-              </div>
-            </header>
-            <nav>
-              <button>
-                <CreditCard size={14} color="#8047F8" weight="bold" />
-                <p>Cartão de crédito</p>
-              </button>
-              <button>
-                <Bank size={14} color="#8047F8" weight="bold" />
-                <p>Cartão de débito</p>
-              </button>
-              <button>
-                <Money size={14} color="#8047F8" weight="bold" />
-                <p>Dinheiro</p>
-              </button>
-            </nav>
-          </PaymentContainer>
         </CompleteYourOrder>
         <ContainerAside>
           <h3>Cafés selecionados</h3>
