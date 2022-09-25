@@ -26,20 +26,20 @@ import {
   TypesCoffee,
   TypesForm,
 } from '../../contexts/CoffeeContextProvider'
-import { NavLink } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-// import { v4 as uuidv4 } from 'uuid'
+import { InfoPayment } from './InfoPayment'
+import { CartEmpty } from './CartEmpty'
 
 const validationSchema = zod.object({
-  cep: zod.string().min(1, 'Informe o cep'),
-  numero: zod.number(),
-  rua: zod.string().min(1, 'Informe a rua'),
-  complemento: zod.string().min(1, 'Informe o complemento'),
-  uf: zod.string().min(2, 'Informe o uf').max(2),
-  cidade: zod.string().min(1, 'Informe a cidade'),
-  bairro: zod.string().min(1, 'Informe o bairro'),
+  cep: zod.string().min(1),
+  numero: zod.string().min(1),
+  rua: zod.string().min(1),
+  complemento: zod.string().min(1),
+  uf: zod.string().min(1),
+  cidade: zod.string().min(1),
+  bairro: zod.string().min(1),
 })
 
 // export type FormAdress = zod.infer<typeof validationSchema>
@@ -53,26 +53,12 @@ export function Checkout() {
       cep: '',
       rua: '',
       complemento: '',
-      numero: 0,
+      numero: '',
       uf: '',
       cidade: '',
       bairro: '',
     },
   })
-
-  const sumCart = cart.reduce(
-    (acc, currentValue) => acc + currentValue.quantity * currentValue.price,
-    0,
-  )
-  const sumQuantity = cart.reduce(
-    (acc, currentValue) => acc + currentValue.quantity,
-    0,
-  )
-  const delivery =
-    sumQuantity < 5
-      ? `R$ ${(3.5).toFixed(2).replace('.', ',')}`
-      : 'Frete Grátis'
-  const total = delivery === 'Frete Grátis' ? sumCart : sumCart + 3.5
 
   return (
     <>
@@ -91,22 +77,29 @@ export function Checkout() {
               <InputCheckoutCep
                 type=""
                 placeholder="cep"
+                maxLength={9}
                 {...register('cep')}
               />
               <InputCheckoutRua
                 type="text"
                 placeholder="Rua"
+                minLength={1}
+                maxLength={40}
                 {...register('rua')}
               />
               <div>
                 <InputCheckoutNumero
-                  type="number"
+                  type="text"
                   placeholder="Numero"
-                  {...register('numero', { valueAsNumber: true })}
+                  minLength={1}
+                  maxLength={6}
+                  {...register('numero')}
                 />
                 <InputCheckoutComplemento
                   type="text"
                   placeholder="Complemento"
+                  minLength={1}
+                  maxLength={20}
                   {...register('complemento')}
                 />
               </div>
@@ -114,16 +107,22 @@ export function Checkout() {
                 <InputCheckoutBairro
                   type="text"
                   placeholder="Bairro"
+                  minLength={1}
+                  maxLength={25}
                   {...register('bairro')}
                 />
                 <InputCheckoutCidade
                   type="text"
                   placeholder="Cidade"
+                  minLength={1}
+                  maxLength={15}
                   {...register('cidade')}
                 />
                 <InputCheckoutUf
                   type="text"
                   placeholder="UF"
+                  minLength={1}
+                  maxLength={3}
                   {...register('uf')}
                 />
               </div>
@@ -174,24 +173,7 @@ export function Checkout() {
                 />
               )
             })}
-            <ul>
-              <li>
-                <p>Total de itens</p>
-                <span>R$ {sumCart.toFixed(2).replace('.', ',')}</span>
-              </li>
-              <li>
-                <p>Entrega</p>
-                <span>{delivery}</span>
-              </li>
-              <li>
-                <p>Total</p>
-                <span>R$ {total.toFixed(2).replace('.', ',')}</span>
-              </li>
-            </ul>
-            <NavLink to="/success" title="Success">
-              confirmar pedido
-              <button type="submit"></button>
-            </NavLink>
+            {cart.length > 0 ? <InfoPayment /> : <CartEmpty />}
           </SelectedProducts>
         </ContainerAside>
       </ContainerMain>

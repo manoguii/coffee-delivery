@@ -16,10 +16,10 @@ export function Header() {
       </NavLink>
       <nav>
         <span>
-          <NavLink to="/success" title="Success">
+          <a>
             <MapPin size={20} color="#8047F8" weight="fill" />
             Contagem, MG
-          </NavLink>
+          </a>
         </span>
         <NavLink to="/checkout" title="Cart">
           <ShoppingCart color="#C47F17" weight="fill" size={20} />

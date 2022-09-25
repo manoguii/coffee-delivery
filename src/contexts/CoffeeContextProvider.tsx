@@ -20,7 +20,7 @@ import img14 from '../assets/Image (14).svg'
 
 export interface TypesForm {
   cep: string;
-  numero: number;
+  numero: string;
   rua: string;
   complemento: string;
   uf: string;
