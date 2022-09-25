@@ -1,6 +1,6 @@
 import {
   CompleteYourOrder,
-  ContainerAside,
+  Container,
   ContainerMain,
   InputCheckoutBairro,
   InputCheckoutCep,
@@ -10,7 +10,7 @@ import {
   InputCheckoutRua,
   InputCheckoutUf,
   PaymentContainer,
-  SelectedProducts,
+  SelectedProductsAside,
 } from './styles'
 import {
   Bank,
@@ -156,9 +156,9 @@ export function Checkout() {
             </PaymentContainer>
           </form>
         </CompleteYourOrder>
-        <ContainerAside>
+        <Container>
           <h3>Cafés selecionados</h3>
-          <SelectedProducts>
+          <SelectedProductsAside>
             {cart.map((coffee: TypesCoffee) => {
               return (
                 <CoffeeSelected
@@ -174,8 +174,8 @@ export function Checkout() {
               )
             })}
             {cart.length > 0 ? <InfoPayment /> : <CartEmpty />}
-          </SelectedProducts>
-        </ContainerAside>
+          </SelectedProductsAside>
+        </Container>
       </ContainerMain>
     </>
   )

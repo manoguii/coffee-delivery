@@ -300,7 +300,7 @@ export const InputCheckoutUf = styled(BaseInputFormCheckout)`
   height: 42px;
 `
 
-export const SelectedProducts = styled.aside`
+export const SelectedProductsAside = styled.aside`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -330,7 +330,7 @@ export const SelectedProducts = styled.aside`
   }
 `
 
-export const ContainerAside = styled.div`
+export const Container = styled.div`
   h3 {
     font-family: 'Baloo 2';
     font-weight: 700;
@@ -339,9 +339,4 @@ export const ContainerAside = styled.div`
     color: ${(props) => props.theme.baseTheme.subtitle};
     margin-bottom: 1rem;
   }
-
-  /* @media (max-width: 1200px) {
-    display: grid;
-    grid-template-columns: 50% 50%;
-  } */
 `

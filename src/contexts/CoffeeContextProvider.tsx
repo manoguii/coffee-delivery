@@ -259,7 +259,7 @@ export function CoffeeContextProvider({ children }: Context) {
         quantity: cart[idx].quantity + clickedObject.quantity,
       }
     } else if (clickedObject.quantity === 0) {
-      console.log('adicione um item')
+      alert('Selecione uma quantidade')
     } else {
       setCart((state: TypesCoffee[]) => {
         return [...state, clickedObject]
