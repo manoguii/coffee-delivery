@@ -24,35 +24,6 @@ export const ContainerMain = styled.main`
 `
 
 export const CompleteYourOrder = styled.div`
-  @media (max-width: 1200px) {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    gap: 1rem;
-
-    h3 {
-      grid-row: 1;
-    }
-
-    form {
-      grid-row: 2;
-    }
-
-    footer {
-      grid-row: 2;
-      height: fit-content;
-      margin-top: 0;
-    }
-  }
-
-  @media (max-width: 999px) {
-    display: flex;
-    flex-direction: column;
-
-    footer {
-      margin-top: 2rem;
-    }
-  }
-
   h3 {
     font-family: 'Baloo 2';
     font-weight: 700;
@@ -63,27 +34,41 @@ export const CompleteYourOrder = styled.div`
   }
 
   form {
-    > header {
+    @media (max-width: 1200px) {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 50% 50%;
+      grid-gap: 1rem;
+
+      > header {
+        grid-row: 1;
+        grid-column: 1/3;
+        padding: 2rem;
+      }
+
+      section {
+        grid-column: 1;
+      }
+
+      footer {
+        grid-column: 2;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 999px) {
       display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      background: ${(props) => props.theme.baseTheme.card};
-      border-radius: 6px;
-      padding: 2.5rem 2.5rem 0 2.5rem;
+      flex-direction: column;
+
+      footer {
+        margin-top: 2rem;
+      }
     }
 
     width: auto;
 
     @media (max-width: 605px) {
-      padding: 1.8rem;
-    }
-
-    @media (max-width: 505px) {
-      padding: 1.5rem;
-    }
-
-    @media (max-width: 405px) {
-      padding: 1rem;
+      padding: 0;
     }
 
     input:focus {
@@ -103,6 +88,18 @@ export const CompleteYourOrder = styled.div`
       border-radius: 6px;
       padding: 2.5rem;
 
+      > header {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+        }
+      }
+
       div {
         display: flex;
         gap: 0.75rem;
@@ -113,11 +110,23 @@ export const CompleteYourOrder = styled.div`
         flex-wrap: wrap;
       }
 
-      @media (max-width: 1090px) {
+      @media (max-width: 1190px) {
         div {
           display: grid;
           grid-template-columns: 50% 50%;
         }
+      }
+
+      @media (max-width: 605px) {
+        padding: 1.8rem;
+      }
+
+      @media (max-width: 505px) {
+        padding: 1.5rem;
+      }
+
+      @media (max-width: 405px) {
+        padding: 1rem;
       }
 
       h4 {
@@ -155,10 +164,6 @@ export const CompleteYourOrder = styled.div`
 
       button:hover {
         background: ${(props) => props.theme.productTheme.yellow};
-      }
-
-      button:disabled {
-        cursor: no-drop;
       }
     }
   }
@@ -299,10 +304,30 @@ export const SelectedProducts = styled.aside`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 2.5rem;
   background: ${(props) => props.theme.baseTheme.card};
   border-radius: 6px 44px;
+
+  @media (max-width: 605px) {
+    padding: 1.8rem;
+  }
+
+  @media (max-width: 505px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 405px) {
+    padding: 1rem;
+  }
+
+  @media (max-width: 475px) {
+    padding: 30px;
+  }
+
+  @media (max-width: 410px) {
+    padding: 15px;
+  }
 `
 
 export const ContainerAside = styled.div`
@@ -314,4 +339,9 @@ export const ContainerAside = styled.div`
     color: ${(props) => props.theme.baseTheme.subtitle};
     margin-bottom: 1rem;
   }
+
+  /* @media (max-width: 1200px) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  } */
 `

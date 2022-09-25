@@ -66,14 +66,14 @@ export function Checkout() {
         <CompleteYourOrder>
           <h3>Complete seu pedido</h3>
           <form onSubmit={handleSubmit(handleCreateNewForm)}>
-            <header>
-              <MapPinLine size={20} color="#C47F17" weight="bold" />
-              <div>
-                <h4>Endereço de Entrega</h4>
-                <p>Informe o endereço onde deseja receber seu pedido</p>
-              </div>
-            </header>
             <section>
+              <header>
+                <MapPinLine size={20} color="#C47F17" weight="bold" />
+                <div>
+                  <h4>Endereço de Entrega</h4>
+                  <p>Informe o endereço onde deseja receber seu pedido</p>
+                </div>
+              </header>
               <InputCheckoutCep
                 type=""
                 placeholder="cep"

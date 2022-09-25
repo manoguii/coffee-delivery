@@ -6,26 +6,6 @@ export const InfoPaymentContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width: 605px) {
-    padding: 1.8rem;
-  }
-
-  @media (max-width: 505px) {
-    padding: 1.5rem;
-  }
-
-  @media (max-width: 405px) {
-    padding: 1rem;
-  }
-
-  @media (max-width: 475px) {
-    padding: 30px;
-  }
-
-  @media (max-width: 410px) {
-    padding: 15px;
-  }
-
   ul {
     display: flex;
     width: 100%;
