@@ -31,12 +31,8 @@ interface InputProps {
   placeholder: string
   maxLength: number
   minLength: number
-  name: string
+  name: any
   id: string
-}
-
-type TypesFormProps = TypesForm & {
-  name: string
 }
 
 export function FormDelivery() {
@@ -52,7 +48,7 @@ export function FormDelivery() {
     addConfig(configForm)
   }, [])
 
-  const { register, handleSubmit } = useForm<TypesFormProps>({
+  const { register, handleSubmit } = useForm<TypesForm>({
     resolver: zodResolver(validationSchema),
     defaultValues: {
       cep: '',

@@ -271,34 +271,6 @@ export const BaseInputFormCheckout = styled.input`
   color: ${(props) => props.theme.baseTheme.label};
   font-size: 0.875rem;
 `
-export const InputCheckoutCep = styled(BaseInputFormCheckout)`
-  width: 12.5rem;
-  height: 2.625rem;
-`
-export const InputCheckoutRua = styled(BaseInputFormCheckout)`
-  width: auto;
-  height: 2.625rem;
-`
-export const InputCheckoutNumero = styled(BaseInputFormCheckout)`
-  width: auto;
-  height: 2.625rem;
-`
-export const InputCheckoutComplemento = styled(BaseInputFormCheckout)`
-  width: auto;
-  height: 2.625rem;
-`
-export const InputCheckoutBairro = styled(BaseInputFormCheckout)`
-  width: auto;
-  height: 2.625rem;
-`
-export const InputCheckoutCidade = styled(BaseInputFormCheckout)`
-  width: auto;
-  height: 2.625rem;
-`
-export const InputCheckoutUf = styled(BaseInputFormCheckout)`
-  max-width: 60px;
-  height: 42px;
-`
 
 export const SelectedProductsAside = styled.aside`
   width: 100%;
