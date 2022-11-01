@@ -1,7 +1,6 @@
-/* eslint-disable prettier/prettier */
 import { v4 as uuidv4 } from 'uuid'
 
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode } from 'react'
 
 import img1 from '../assets/Image (1).svg'
 import img2 from '../assets/Image (2).svg'
@@ -18,17 +17,6 @@ import img12 from '../assets/Image (12).svg'
 import img13 from '../assets/Image (13).svg'
 import img14 from '../assets/Image (14).svg'
 
-export interface TypesForm {
-  cep: string;
-  numero: string;
-  rua: string;
-  complemento: string;
-  uf: string;
-  cidade: string;
-  bairro: string;
-  id: string;
-}
-
 export interface TypesCoffee {
   id?: string | any
   title: string
@@ -39,17 +27,7 @@ export interface TypesCoffee {
   quantity: number
 }
 export interface TypesContext {
-  products: TypesCoffee[]
-  cart: TypesCoffee[]
   coffeeAvailables: TypesCoffee[]
-  form: TypesForm[]
-  increaseAmountOfCoffee: (id: string) => void
-  addProductToCart: (id: string) => void
-  decreaseAmountOfCoffee: (id: string) => void
-  deleteProductFromCart: (id: string) => void
-  addQuantityToCart: (id: string) => void
-  removeQuantityToCart: (id: string) => void
-  handleCreateNewForm: (data: TypesForm) => void
 }
 
 interface Context {
@@ -57,8 +35,6 @@ interface Context {
 }
 
 export const CoffeeContext = createContext({} as TypesContext)
-
-
 
 export function CoffeeContextProvider({ children }: Context) {
   const coffeeAvailables: TypesCoffee[] = [
@@ -195,125 +171,10 @@ export function CoffeeContextProvider({ children }: Context) {
     },
   ]
 
-  const [products, setProducts] = useState<TypesCoffee[]>(coffeeAvailables)
-  const [cart, setCart] = useState<TypesCoffee[]>([])
-  const [form, setForm] = useState<TypesForm[]>([])
-
-  function handleCreateNewForm(data: TypesForm) {
-    const idForm = uuidv4()
-    const formAdress = {
-      cep: data.cep,
-      numero: data.numero,
-      rua: data.rua,
-      complemento: data.complemento,
-      uf: data.uf,
-      cidade: data.cidade,
-      bairro: data.bairro,
-      id: idForm,
-      }
-    setForm([formAdress])
-  }
-
-  console.log(form)
-
-  function increaseAmountOfCoffee(id: string) {
-    const idx = products.findIndex((coffee) => {
-      return coffee.id === id
-    })
-    const coffees = [...products]
-    coffees[idx] = {
-      ...coffees[idx],
-      quantity: coffees[idx].quantity + 1,
-    }
-    setProducts(coffees)
-  }
-
-  function decreaseAmountOfCoffee(id: string) {
-    const idx = products.findIndex((coffee) => {
-      return coffee.id === id
-    })
-    const coffees = [...products]
-    if (coffees[idx].quantity > 0) {
-      coffees[idx] = {
-        ...coffees[idx],
-        quantity: coffees[idx].quantity - 1,
-      }
-    }
-    setProducts(coffees)
-  }
-
-  function addProductToCart(id: string) {
-    const clickedObject: TypesCoffee | any = products.find((coffees) => {
-      return coffees.id === id
-    })
-    const haveInTheArray = cart.some((item: TypesCoffee) => {
-      return item.id === clickedObject?.id
-    })
-    const idx = cart.findIndex((coffee: TypesCoffee) => {
-      return coffee.id === id
-    })
-
-    if (haveInTheArray) {
-      cart[idx] = {
-        ...cart[idx],
-        quantity: cart[idx].quantity + clickedObject.quantity,
-      }
-    } else if (clickedObject.quantity === 0) {
-      alert('Selecione uma quantidade')
-    } else {
-      setCart((state: TypesCoffee[]) => {
-        return [...state, clickedObject]
-      })
-    }
-  }
-
-  function deleteProductFromCart(id: string) {
-    const produtoClickado = cart.filter((coffee: TypesCoffee) => {
-      return coffee.id !== id
-    })
-    setCart(produtoClickado)
-  }
-
-  function addQuantityToCart(id: string) {
-    const idx = cart.findIndex((coffee: TypesCoffee) => coffee.id === id)
-
-    const arrayCart = [...cart]
-    arrayCart[idx] = {
-      ...arrayCart[idx],
-      quantity: arrayCart[idx].quantity + 1,
-    }
-
-    setCart(arrayCart)
-  }
-
-  function removeQuantityToCart(id: string) {
-    const idx = cart.findIndex((coffee: TypesCoffee) => coffee.id === id)
-
-    const arrayCart = [...cart]
-    if (arrayCart[idx].quantity > 0) {
-      arrayCart[idx] = {
-        ...arrayCart[idx],
-        quantity: arrayCart[idx].quantity - 1,
-      }
-    }
-
-    setCart(arrayCart)
-  }
-
   return (
     <CoffeeContext.Provider
       value={{
-        increaseAmountOfCoffee,
-        addProductToCart,
-        products,
         coffeeAvailables,
-        cart,
-        decreaseAmountOfCoffee,
-        deleteProductFromCart,
-        addQuantityToCart,
-        removeQuantityToCart,
-        handleCreateNewForm,
-        form,
       }}
     >
       {children}

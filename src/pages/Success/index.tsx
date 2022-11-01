@@ -1,11 +1,7 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { useContext } from 'react'
-import ImageSuccess from '../../assets/ImageSuccess.svg'
-import { CoffeeContext } from '../../contexts/CoffeeContextProvider'
 import { ContainerMain, Delivery, Locale, Payment } from './styles'
 
 export function Success() {
-  const { form } = useContext(CoffeeContext)
   return (
     <ContainerMain>
       <h1>Uhu! Pedido confirmado</h1>
@@ -16,17 +12,13 @@ export function Success() {
             <Locale>
               <MapPin color="#FFFF" weight={'fill'} size={16} />
             </Locale>
-            {form.map((adress) => {
-              return (
-                <p key={adress.id}>
-                  Entrega em
-                  <span> {adress.rua},</span>
-                  <span>{`${adress.numero} ${adress.bairro}`} - </span>
-                  <span>{adress.cidade},</span>
-                  <span>{adress.uf}</span>
-                </p>
-              )
-            })}
+            <p>
+              Entrega em
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </p>
           </li>
           <li>
             <Delivery>
@@ -47,7 +39,7 @@ export function Success() {
             </p>
           </li>
         </ul>
-        <img src={ImageSuccess} alt="" />
+        <img alt="" />
       </div>
     </ContainerMain>
   )

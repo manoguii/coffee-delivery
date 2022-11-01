@@ -1,10 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import { useContext } from 'react'
 import imageCoffeeDelivery from '../../assets/imagemCoffe.svg'
-import {
-  CoffeeContext,
-  TypesCoffee,
-} from '../../contexts/CoffeeContextProvider'
 import { CoffeeCard } from './CoffeeCard'
 import {
   CartIcon,
@@ -16,8 +11,6 @@ import {
 } from './styles'
 
 export function Home() {
-  const { products } = useContext(CoffeeContext)
-
   return (
     <>
       <ContainerSection>
@@ -59,20 +52,7 @@ export function Home() {
       <ContainerMain>
         <h3>Nossos cafés</h3>
         <article>
-          {products.map((coffee: TypesCoffee) => {
-            return (
-              <CoffeeCard
-                key={coffee.id}
-                id={coffee.id}
-                title={coffee.title}
-                description={coffee.description}
-                tag={coffee.tag}
-                price={coffee.price}
-                img={coffee.img}
-                quantity={coffee.quantity}
-              />
-            )
-          })}
+          <CoffeeCard />
         </article>
       </ContainerMain>
     </>
