@@ -1,6 +1,8 @@
+const id = Math.random().toString()
+
 export const configForm = [
   {
-    id: Math.random().toString(),
+    id,
     name: 'cep',
     type: 'number',
     placeholder: 'cep',
@@ -9,7 +11,7 @@ export const configForm = [
     register: {},
   },
   {
-    id: Math.random().toString(),
+    id,
     name: 'rua',
     type: 'text',
     placeholder: 'rua',
@@ -18,7 +20,7 @@ export const configForm = [
     register: {},
   },
   {
-    id: Math.random().toString(),
+    id,
     name: 'numero',
     type: 'number',
     placeholder: 'numero',
@@ -27,7 +29,7 @@ export const configForm = [
     register: {},
   },
   {
-    id: Math.random().toString(),
+    id,
     name: 'complemento',
     type: 'text',
     placeholder: 'complemento',
@@ -36,7 +38,7 @@ export const configForm = [
     register: {},
   },
   {
-    id: Math.random().toString(),
+    id,
     name: 'bairro',
     type: 'text',
     placeholder: 'bairro',
@@ -45,7 +47,7 @@ export const configForm = [
     register: {},
   },
   {
-    id: Math.random().toString(),
+    id,
     name: 'uf',
     type: 'text',
     placeholder: 'uf',
@@ -54,7 +56,7 @@ export const configForm = [
     register: {},
   },
   {
-    id: Math.random().toString(),
+    id,
     name: 'cidade',
     type: 'text',
     placeholder: 'cidade',
